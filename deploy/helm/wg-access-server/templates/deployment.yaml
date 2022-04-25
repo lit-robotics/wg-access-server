@@ -40,6 +40,9 @@ spec:
               protocol: TCP
             - name: wireguard
               containerPort: 51820
+            {{- if .Values.wireguard.hostPort }}
+              hostPort: {{ .Values.wireguard.hostPort }}
+            {{- end }}
               protocol: UDP
           env:
             {{- if .Values.wireguard.config.privateKey }}
